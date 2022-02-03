@@ -8,7 +8,7 @@
       "email": "bohomolov.work@gmail.com"
     }
   },
-  "host": "vpz",
+  "host": "indexes",
   "basePath": "/api",
   "securityDefinitions": {},
   "schemes": [
