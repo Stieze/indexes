@@ -16,6 +16,10 @@ class ApiZIP
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         $data = curl_exec ($ch);
         curl_close ($ch);
+        $test = getenv("TEMP_FOLDER");
+        if (!file_exists(getenv("TEMP_FOLDER"))) {
+            mkdir(getenv("TEMP_FOLDER"), 0777, true);
+        }
         $destination = getenv("TEMP_FOLDER") . getenv("FILE_NAME") . ".zip";
         $file = fopen($destination, "w+");
         fputs($file, $data);
