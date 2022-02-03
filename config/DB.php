@@ -45,7 +45,7 @@ class DB {
         foreach ($data as $value){
             $sql = "SELECT COUNT(`index`) as count FROM indexes WHERE `index` = '{$value['index']}'";
 
-            if (!ctype_digit($value)) {
+            if (!ctype_digit($value['index'])) {
                 $returnMessage['messages'][] = "An error occurred while getting data. The index {$value['index']} must contain only numbers.";
                 continue;
             }
@@ -164,7 +164,8 @@ class DB {
      * @param string $index
      * @return array|bool
      */
-    public function selectByIndex(string $index): array|bool {
+    public function selectByIndex(string $index)
+    {
         $sql = "SELECT i.index, i.post, i.automation, i.street, i.phone,
                     (SELECT name FROM districts d WHERE d.id = i.districtOld) districtOld, 
                     (SELECT name FROM districts d WHERE d.id = i.districtNew) districtNew, 
